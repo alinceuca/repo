@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic Equation</title>
+</head>
+<body>
+{{if .Success}}
+    <h1>{{.Message}}</h1>
+{{else}}
+    <h1>Quadratic Equation input</h1>
+    <form method="POST">
+        <label>a:</label><br/>
+        <input type="number" name="a"><br/>
+        <label>b:</label><br/>
+        <input type="number" name="b"><br/>
+        <label>c:</label><br/>
+        <input type="number" name="c"><br/>
+        <label>d:</label><br/>
+        <input type="number" name="d" value="0"><br/>
+
+        <input type="submit">
+    </form>
+{{end}}
+</body>
+</html>
