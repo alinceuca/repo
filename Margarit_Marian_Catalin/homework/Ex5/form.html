@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+{{if .Success}}
+    <h1>Thanks !!!!</h1>
+{{else}}
+    <h1>Introduceti datele</h1>
+    <form method="POST">
+        <label>A:</label><br />
+        <input type="number" name="aCoef"><br />
+        <label>B:</label><br />
+        <input type="number" name="bCoef"><br />
+        <label>C:</label><br />
+        <input type="number" name="cCoef"><br />
+        <input type="submit">
+    </form>
+{{end}}
+</body>
+</html>
