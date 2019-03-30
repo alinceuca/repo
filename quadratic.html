@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<title>Quadratic Equation</title>
+<body>
+    <h1>Quadratic Equation</h1>
+    <p> Solve equations of the form: ax² + bx + c = 0</p>
+    <form method="POST" action="/process">
+        <label>a:</label>
+        <input type="text" name="a" size="2"><br/></br>
+        <label>b:</label>
+        <input type="text" name="b" size="2"><br/></br>
+        <label>c:</label>
+        <input type="text" name="c" size="2"></input></br></br>
+        <input type="submit" value="Calculate"></br></br>
+        {{with .X1}}<div>x1 = {{.}}</div>{{end}}
+        {{with .X2}}<div>x2 = {{.}}</div>{{end}}
+
+    </form>
+    </br>
+
+    {{/*<label>X1 = </label>{{with .X1}}<input type="text" name="X1" size="6" value="{{.}}" disabled>
+    <label>X2 = </label><input type="text" name="X2" size="6" value="{{.X2}}" disabled>*/}}
+</body>
+</html>
