@@ -42,7 +42,7 @@ func main() {
 			C:   r.FormValue("c"),
 		}
 		var rezEc Rezultat
-
+	println(dateCitite.A,dateCitite.B,dateCitite.C)
 		rezEc=ecGrad2(dateCitite)
 		// do something with details
 		//_ = details
@@ -89,7 +89,7 @@ func ecGrad2(datePol Polinom ) Rezultat{
 			rezEc.Sol1=strconv.FormatFloat(sol1, 'f', 6, 64)
 			rezEc.Sol2=strconv.FormatFloat(sol2, 'f', 6, 64)
 		}else{
-           re=b*(2*a)
+           re=-b/(2*a)
            im=math.Sqrt(-delta)/(2*a)
 			//rezultate
            rezEc.IsComlex=true

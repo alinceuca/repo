@@ -25,8 +25,10 @@ func main() {
 	fmt.Printf("\nIntre datele %v - %v aven %d zile \n",data1,data2,nrZile)
 
 	ani, luni, saptamini, zile := anLuniSaptamaniZile(nrZile)
-	fmt.Printf(" \n Numarul de zile = %d insemna %d ani,%d luni %d saptamini, %d zile \n",nrZile,ani,luni,saptamini,zile)
+	fmt.Printf(" \n Numarul de zile aproximativ = %d insemna %d ani,%d luni %d saptamini, %d zile \n",nrZile,ani,luni,saptamini,zile)
 
+	ani1, luni1, saptamini1, zile1 :=numarAnLuniSaptZile(data1,data2)
+	fmt.Printf(" \n Numarul de zile = %d insemna %d ani,%d luni %d saptamini, %d zile \n",nrZile,ani1,luni1,saptamini1,zile1)
 
 	data3=plusZile(data2,20)
 	fmt.Printf("Data %v + 20 zile = %v",data2,data3)
@@ -112,10 +114,146 @@ func comparDate(d1, d2 Data) int{
 	}
 	if d1.Zi<d2.Zi{
 		return -1
-	}else{
+	}
+	if d1.Zi>d2.Zi{
 		return 1
 	}
+
+
 	return 0
+}
+
+
+func comparAn(d1,d2 Data) int{
+	// 1 An1>An2; 0 A1==A2; -1 A1<A2
+	if (d1.An<d2.An){
+		return -1
+	}else{
+		if(d1.An==d2.An){
+			return 0
+		}
+	}
+	return 1
+}
+
+func plusAn(d1 Data)Data{
+	d1.An++
+	return d1
+}
+
+func comparLuna(d1,d2 Data) int{
+	//1 nu adun, 0 am terminat,-1 adun
+	if (d1.An>d2.An){
+		return 1
+	}
+	if(d1.An==d2.An){
+		if(d1.Luna<d2.Luna){
+			return -1
+
+		}else{
+			if(d1.Luna==d2.Luna){
+				return 0
+			}
+		}
+     }
+
+	return -1
+
+}
+
+func scadLuna(d Data) Data{
+ 	if (d.Luna==1){
+ 		d.An--
+ 		d.Luna=12
+	}else{
+		d.Luna--
+	}
+
+ 	return d
+ }
+
+func plusLuna(d Data) Data{
+	 if (d.Luna==12){
+	 	d.An++
+	 	d.Luna=1
+	 }else{
+	 	d.Luna++
+	 }
+	return d
+}
+
+func numarAnLuniSaptZile(d1,d2 Data) (int,int,int,int){
+	var ani,luni,saptamani,zile int
+
+
+	if comparDate(d1,d2)== -1{
+       //d1<d2
+		if (comparAn(d1,d2)==-1){ //a1<a2
+			for (comparAn(d1, d2) == -1) {
+					d1 = plusAn(d1)
+					ani++
+			}
+			if (comparDate(d1,d2)==1){
+				ani--
+				d1.An--
+			}
+
+		}
+
+		if (comparDate(d1,d2)==-1){
+				for (comparLuna(d1, d2) == -1) {
+					d1 = plusLuna(d1)
+					luni++
+				}
+			if (comparDate(d1,d2)==1){
+				luni--
+				d1.Luna--
+			}
+
+		}
+		for (comparDate(d1,d2)== -1){
+			d1=plusOZi(d1)
+			zile++
+		}
+	}else if comparDate(d1,d2)== 1{
+		//d2<d1
+		if (comparAn(d2,d1)==-1){ //a2<a1
+			for (comparAn(d2, d1) == -1) {
+				d2 = plusAn(d2)
+				ani++
+			}
+			if (comparDate(d2,d1)==1){
+				ani--
+				d2.An--
+			}
+
+		}
+
+		if (comparDate(d2,d1)==-1){
+
+			for (comparLuna(d2, d1) == -1) {
+					d2 = plusLuna(d2)
+					luni++
+			}
+			if (comparDate(d2,d1)==1){
+				luni--
+				d2.Luna--
+			}
+		}
+		for (comparDate(d2,d1)== -1){
+			d2=plusOZi(d2)
+			zile++
+		}
+
+	}else
+	{
+		zile=0
+	}
+
+	saptamani=zile/7
+	zile=zile%7
+
+	return ani,luni,saptamani,zile
 }
 
 func anBisect(an int) bool{
@@ -185,6 +323,7 @@ func numarZile(d1,d2 Data) int{
 	}
 	return totalZile
 }
+
 
 func anLuniSaptamaniZile(zileTotal int) (int,int,int,int){
 	var an,luni,saptamani,zile int
