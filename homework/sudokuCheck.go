@@ -43,7 +43,7 @@ func main() {
 		{9, 1, 2, 3, 4, 5, 6, 7, 8},
 	}
 	if check(sudoku) == true {
-		println("Sudoku is valgfid")
+		println("Sudoku is valid")
 	} else {
 		println("Sudoku is invalid")
 	}
