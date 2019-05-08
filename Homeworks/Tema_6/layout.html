@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<form action="/points">
+    <h1>{{.PageTitle}}</h1>
+    <label>{{.ErrorMessage}}</label></br>
+    <label>Cate puncte doresti:</label>
+    <input type="text" name="NrOfPoints" value={{.NrOfPoints}}><br/><br />
+    {{if .Points}}
+        {{range $point := .Points}}
+            <label>x axis:</label>
+            <input type="text" name={{$point.XaxisLabelName}} value={{$point.Xaxis}}><br />
+            <label>y axis:</label>
+            <input type="text" name={{$point.YaxisLabelName}} value={{$point.Yaxis}}><br />
+            <br />
+        {{end}}
+    {{end}}
+    <input type="submit"/>
+</form>
+<label>Centrul cercului este punctul ({{.PerfectPointX}}, {{.PerfectPointY}}) si raza este {{.Radius}}</label><br/>
+<image src="/statics/points.png"/>
+</body>
+</html>
