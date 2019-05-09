@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<script>
+    function generateForm(){
+        document.getElementById("inputForm").innerHTML = "";
+        var nrPoints = document.getElementById("nrPoints").value;
+        var form = document.createElement('form');
+        form.setAttribute("method","POST");
+        var tbl=document.createElement('table');
+        tbl.setAttribute("border","1");
+        var tbdy=document.createElement("tbody");
+        for(var i=0;i<nrPoints;i++){
+            var tr =document.createElement("tr");
+            for(var j=0;j<3;j++) {
+                if(j==0){
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode("Point (" + i + ") X");
+                    cell.appendChild(cellText);
+                    tr.appendChild(cell);
+                } else if(j==1){
+                    var cell = document.createElement("td");
+                    var inputBox = document.createElement("input");
+                    inputBox.setAttribute("type", "text");
+                    var inpuntName="coordX"+i;
+                    inputBox.setAttribute("name",inpuntName);
+                    cell.appendChild(inputBox);
+                    tr.appendChild(cell);
+                }else if(j==2){
+                    var cell = document.createElement("td");
+                    var inputBox = document.createElement("input");
+                    inputBox.setAttribute("type", "text");
+                    var inpuntName="coordY"+i;
+                    inputBox.setAttribute("name",inpuntName);
+                    cell.appendChild(inputBox);
+                    tr.appendChild(cell);
+                }
+            }
+            tbdy.appendChild(tr);
+        }
+        tbl.appendChild(tbdy);
+        form.appendChild(tbl);
+        var button = document.createElement("input");
+        button.setAttribute("type","submit");
+        form.appendChild(button);
+        var nrPoint=document.createElement("input");
+        nrPoint.setAttribute("name","nrOfPoints");
+        nrPoint.setAttribute("value",nrPoints);
+        nrPoint.setAttribute("hidden","true");
+        form.appendChild(nrPoint);
+        document.getElementById("inputForm").append(form);
+    }
+</script>
+{{if .Success}}
+    <h1>Thanks !!!!</h1>
+{{else}}
+    <h1>Introduceti datele</h1>
+        <label>Number of points:</label><br />
+        <input type="number" id="nrPoints" name="nrPoints"><br />
+        <button name="generateFormBtn" onclick="generateForm()">Generate Imput Form</button>
+        <div id="inputForm"></div>
+{{end}}
+</body>
+</html>
