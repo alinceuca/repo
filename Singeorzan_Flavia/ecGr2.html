@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<title>Rezolvarea Ecuatiei de Gradul II</title>
+<body>
+<p>ax<sup>2</sup> + bx + c=0</p>
+<form action="/process" method="POST">
+    <input type="text" name="a" size="1"><label for="a">x<sup>2</sup></label> +
+    <input type="text" name="b" size="1"><label for="b">x</label> +
+    <input type="text" name="c" size="1"><label for="c">=0</label>
+    <br>
+    <input type="submit" name="Calculeaza" value="Calculeaza">
+    <p>Rezultate: </p>
+    <input type="text" name="X1" size="1" value="{{.X1}}"><label for="X1"> X1</label>
+    <br>
+    <input type="text" name="X1" size="1" value="{{.X2}}"><label for="X1"> X2</label>
+    <br>
+    <br>
+    <br>
+    <input type="text" name="C1" size="5" value="{{.C1}}" disabled><label for="C1"> C1</label>
+    <br>
+    <input type="text" name="C2" size="5" value="{{.C2}}" disabled><label for="C2"> C2</label>
+</form>
