@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ecuatia de grad 2</title>
+</head>
+<body>
+<div>
+    {{if .Success}}
+    {{else}}
+        <h1>Ecuatia de gradul 2</h1>
+        <form method="POST">
+            <label>Coeficientul lui x^2:</label><br />
+            <input type="number" name="primul"><br />
+            <label>Coeficientul lui x^1:</label><br />
+            <input type="number" name="alDoilea"><br />
+            <label>Coeficientul termenului liber:</label><br />
+            <input type="number" name="alTreilea"><br />
+            <input type="submit">
+        </form>
+    {{end}}
+</div>
+</body>
+</html>
